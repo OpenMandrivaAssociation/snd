@@ -1,5 +1,5 @@
 %define name	snd
-%define version 8.8
+%define version 9.0
 %define release %mkrel 1
 
 Name: 		%{name}
@@ -26,7 +26,7 @@ Snd is a free sound editor modelled loosely after Emacs and an old,
 sorely-missed PDP-10 sound editor named Dpysnd.
 
 %prep
-%setup -q -n %{name}-8
+%setup -q -n %{name}-9
 
 %build
 %configure2_5x	--with-ladspa \
@@ -86,5 +86,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*
 %{_menudir}/%{name}
 %{_mandir}/*/*
-
-

@@ -1,5 +1,5 @@
 %define name	snd
-%define version 9.1
+%define version 9.2
 %define release %mkrel 1
 
 Name: 		%{name}
@@ -7,9 +7,9 @@ Summary: 	Audio file editor
 Version: 	%{version}
 Release: 	%{release}
 
-Source0:	ftp://ccrma-ftp.stanford.edu/pub/Lisp/%{name}-%{version}.tar.bz2
+Source0:	ftp://ccrma-ftp.stanford.edu/pub/Lisp/%{name}-%{version}.tar.gz
 URL:		http://www-ccrma.stanford.edu/software/snd/
-License:	GPL
+License:	BSD-like
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gsl-devel ladspa-devel xpm-devel guile-devel
@@ -52,21 +52,17 @@ cp sndplay sndrecord sndinfo $RPM_BUILD_ROOT%{_bindir}
 %find_lang %{name}
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="sound_section.png" needs="x11" title="Snd" longtitle="Audio file editor" section="Multimedia/Sound" xdg="true"
-EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Name=Totem
+Name=Snd
 Comment=%{summary}
 Exec=%{_bindir}/%{name} %U
-Icon=%{name}
+Icon=sound_section.png
 Terminal=false
 Type=Application
-Categories=GTK;Audio;AudioVideoEditing;X-MandrivaLinux-Multimedia-Sound;
+Categories=GTK;Audio;AudioVideoEditing;
 EOF
 
 %clean
@@ -84,5 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}*
 %{_datadir}/applications/*
 %{_datadir}/%{name}/*
-%{_menudir}/%{name}
 %{_mandir}/*/*

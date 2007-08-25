@@ -1,5 +1,5 @@
 %define name	snd
-%define version 9.2
+%define version 9.3
 %define release %mkrel 1
 
 Name: 		%{name}
@@ -26,7 +26,7 @@ Snd is a free sound editor modelled loosely after Emacs and an old,
 sorely-missed PDP-10 sound editor named Dpysnd.
 
 %prep
-%setup -q -n %{name}-9
+%setup -q
 
 %build
 %configure2_5x	--with-ladspa \
@@ -40,7 +40,7 @@ sorely-missed PDP-10 sound editor named Dpysnd.
 		
 %make
 make sndplay sndrecord sndinfo
-# fixme: make audinfo
+make audinfo
 										
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,7 +48,6 @@ rm -rf $RPM_BUILD_ROOT
 cp mkinstalldirs ..
 %{makeinstall}
 cp sndplay sndrecord sndinfo $RPM_BUILD_ROOT%{_bindir}
-# cp sndsine $RPM_BUILD_ROOT/%_bindir
 %find_lang %{name}
 
 #menu

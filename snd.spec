@@ -58,7 +58,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 Name=Snd
 Comment=%{summary}
 Exec=%{_bindir}/%{name} %U
-Icon=sound_section.png
+Icon=sound_section
 Terminal=false
 Type=Application
 Categories=GTK;Audio;AudioVideoEditing;

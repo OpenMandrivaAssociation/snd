@@ -11,7 +11,6 @@ Source0:	ftp://ccrma-ftp.stanford.edu/pub/Lisp/%{name}-%{version}.tar.gz
 URL:		http://www-ccrma.stanford.edu/software/snd/
 License:	BSD-like
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gsl-devel ladspa-devel xpm-devel guile-devel
 BuildRequires:	libgamin-devel
 BuildRequires:	fftw-devel

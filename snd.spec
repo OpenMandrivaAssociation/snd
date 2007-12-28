@@ -1,5 +1,5 @@
 %define name	snd
-%define version 9.3
+%define version 9.6
 %define release %mkrel 1
 
 Name: 		%{name}

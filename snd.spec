@@ -1,6 +1,6 @@
 %define name	snd
 %define version 9.10
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 		%{name}
 Summary: 	Audio file editor

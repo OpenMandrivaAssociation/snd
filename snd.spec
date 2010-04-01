@@ -1,16 +1,17 @@
 %define name	snd
-%define version 9.10
-%define release %mkrel 3
+%define version 11.4
+%define release %mkrel 1
 
 Name: 		%{name}
 Summary: 	Audio file editor
 Version: 	%{version}
 Release: 	%{release}
-
 Source0:	ftp://ccrma-ftp.stanford.edu/pub/Lisp/%{name}-%{version}.tar.gz
 URL:		http://www-ccrma.stanford.edu/software/snd/
 License:	BSD-like
 Group:		Sound
+#patch0 was sent upstream by Kharec
+Patch0:		snd-11.4-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gsl-devel ladspa-devel xpm-devel guile-devel
 BuildRequires:	libgamin-devel
@@ -27,6 +28,7 @@ sorely-missed PDP-10 sound editor named Dpysnd.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x	--with-ladspa \
@@ -39,7 +41,7 @@ sorely-missed PDP-10 sound editor named Dpysnd.
 		--with-midi
 		
 %make
-make sndplay sndrecord sndinfo
+make sndplay sndinfo
 make audinfo
 										
 %install
@@ -47,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 # stupid hack, sorry, I'm lazy
 cp mkinstalldirs ..
 %{makeinstall}
-cp sndplay sndrecord sndinfo $RPM_BUILD_ROOT%{_bindir}
+cp sndplay sndinfo $RPM_BUILD_ROOT%{_bindir}
 %find_lang %{name}
 
 #menu
@@ -67,19 +69,9 @@ EOF
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-		
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc README.Snd TODO.Snd HISTORY.Snd tutorial
+%doc README.Snd HISTORY.Snd tutorial NEWS COPYING
 %{_bindir}/%{name}*
 %{_datadir}/applications/*
 %{_datadir}/%{name}/*

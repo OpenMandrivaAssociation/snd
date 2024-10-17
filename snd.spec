@@ -3,7 +3,7 @@ Summary: 	Audio file editor
 Version: 	11.4
 Release: 	4
 Source0:	ftp://ccrma-ftp.stanford.edu/pub/Lisp/%{name}-%{version}.tar.gz
-URL:		http://www-ccrma.stanford.edu/software/snd/
+URL:		https://www-ccrma.stanford.edu/software/snd/
 License:	BSD-like
 Group:		Sound
 #patch0 was sent upstream by Kharec

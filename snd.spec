@@ -8,6 +8,11 @@ License:	BSD-like
 Group:		Sound
 #patch0 was sent upstream by Kharec
 Patch0:		snd-11.4-fix-str-fmt.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gsl-devel ladspa-devel xpm-devel guile-devel
 BuildRequires:	pkgconfig(gamin)
 BuildRequires:	fftw-devel
